@@ -1,7 +1,7 @@
 {
   "name": "discordjs-richdisplay",
   "version": "1.0.0",
-  "description": "RichDisplay/Menu from dirigeants/klasa with toggleable DM patches",
+  "description": "RichDisplay/Menu from dirigeants/klasa with DM patches",
   "main": "src/index.js",
   "types":"typings/index.d.ts",
   "scripts": {
