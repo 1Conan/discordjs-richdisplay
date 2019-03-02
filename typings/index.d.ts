@@ -1,10 +1,13 @@
 declare module 'discordjs-richdisplay' {
 
   import {
-    ReactionCollector,
     Emoji,
-    EmojiResolvable,
-    MessageEmbed,
+		EmojiResolvable,
+		Message,
+		MessageEmbed,
+		MessageReaction,
+		ReactionCollector,
+		User
   } from 'discord.js';
 
   export interface ReactionHandlerOptions {
@@ -29,7 +32,7 @@ declare module 'discordjs-richdisplay' {
   }
   
   export interface RichDisplayRunOptions {
-		filter?: ((reaction: MessageReaction, user: KlasaUser) => boolean);
+		filter?: ((reaction: MessageReaction, user: User) => boolean);
 		firstLast?: boolean;
 		jump?: boolean;
 		max?: number;
@@ -63,6 +66,12 @@ declare module 'discordjs-richdisplay' {
 		startPage?: number;
 		stop?: boolean;
 		time?: number;
+	}
+
+	export interface MenuOptions {
+		name: string;
+		body: string;
+		inline?: boolean;
 	}
 
   export class ReactionHandler extends ReactionCollector {
@@ -129,7 +138,7 @@ declare module 'discordjs-richdisplay' {
 		public options: MenuOptions[];
 
 		public addOption(name: string, body: string, inline?: boolean): RichMenu;
-		public run(message: KlasaMessage, options?: RichMenuRunOptions): Promise<ReactionHandler>;
+		public run(message: Message, options?: RichMenuRunOptions): Promise<ReactionHandler>;
 
 		protected _determineEmojis(emojis: EmojiResolvable[], stop: boolean): EmojiResolvable[];
 		private _paginate(): void;
