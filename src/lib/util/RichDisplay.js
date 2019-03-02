@@ -188,6 +188,7 @@ class RichDisplay {
 	async run(message, options = {}) {
 		if (!this.footered) this._footer();
 		if (!options.filter) options.filter = () => true;
+		if (!options.dispose) options.dispose = true;
 		const emojis = this._determineEmojis(
 			[],
 			!('stop' in options) || ('stop' in options && options.stop),
