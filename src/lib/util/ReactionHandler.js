@@ -111,14 +111,10 @@ class ReactionHandler extends ReactionCollector {
     else return this.stop();
     
     this.on('remove', (reaction, user) => {
-      if (reaction.message.channel.type !== 'dm') return;
       this[this.methodMap.get(reaction.emoji.name)](user);
     });
 
 		this.on('collect', (reaction, user) => {
-      if (reaction.message.channel.type !== 'dm') {
-        reaction.users.remove(user);
-      }
 			this[this.methodMap.get(reaction.emoji.name)](user);
 		});
 		this.on('end', () => {
